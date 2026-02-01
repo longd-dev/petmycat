@@ -3,7 +3,10 @@ import { FaCat, FaCommentDots } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='mt-12 border-t border-gray-200 bg-white'>
+    <footer
+      className='mt-12 border-t border-gray-200'
+      style={{ background: "linear-gradient(to bottom, #ede7f6, #d6d0e3)" }}
+    >
       <div className='mx-auto max-w-5xl px-4 py-6'>
         <div className='flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left'>
           <p className='text-sm text-gray-600'>
