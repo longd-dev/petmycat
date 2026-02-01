@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCat, FaCommentDots } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -6,7 +7,9 @@ const Footer = () => {
       <div className='mx-auto max-w-5xl px-4 py-6'>
         <div className='flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left'>
           <p className='text-sm text-gray-600'>
-            <span className='font-medium'>Pet-The-Cat 🐱</span>
+            <span className='font-medium flex items-center gap-2'>
+              <FaCat className='hover:scale-105' /> Pet-The-Cat
+            </span>
             <span className='block sm:inline'>
               {" "}
               built for fun, clicks, and good vibes
@@ -21,9 +24,10 @@ const Footer = () => {
               href='https://docs.google.com/forms/d/1q_OT40g10jqze1eknJHt2hM8untp5o0hKvPr6wkVogc/edit'
               target='_blank'
               rel='noopener noreferrer'
-              className='text-xs sm:text-sm text-blue-600 hover:text-blue-700 underline underline-offset-2 transition-colors'
+              className='flex items-center gap-1 text-xs sm:text-sm text-blue-600 hover:text-blue-700 underline underline-offset-2 transition-colors'
             >
-              💬 Send feedback / report a bug
+              <FaCommentDots className='hover:scale-105' /> Send feedback /
+              report a bug
             </a>
           </div>
         </div>
