@@ -33,6 +33,7 @@ const App = () => {
     "You have unlocked chin scratches.",
     "Illegal levels of cuteness detected.",
     "Pet harder. Emotionally.",
+    "Watch it!!!",
   ];
 
   const handlePet = () => {
