@@ -1,0 +1,28 @@
+export const milestoneMessages = [
+  "Keep going, cat champion!",
+  "Amazing petting skills!",
+  "You’re unstoppable!",
+  "The cat appreciates you!",
+  "Pawsome job, keep it up!",
+  "You’re the purrfect human!",
+  "Cats everywhere salute you!",
+  "You’ve got the magic touch!",
+  "Feline good vibes only!",
+  "You’re a petting pro!",
+  "Whisker wizard at work!",
+  "Tail twitching with joy!",
+  "You make the cat smile!",
+  "Claws out for you!",
+  "Purrfection achieved!",
+  "Master of the kitty arts!",
+  "You’re on a roll, human!",
+  "Keep those pets coming!",
+  "Cat’s best friend forever!",
+  "You’re the cat’s meow!",
+  "Purrs and applause!",
+  "Unleash the pet power!",
+  "Fur-tastic effort!",
+  "You’ve earned a catnap!",
+];
+
+export default milestoneMessages;
