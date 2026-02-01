@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
-import cat from "./assets/cat.png";
+import cat from "./assets/cat.webp";
 import Footer from "./components/Footer";
 import funnyCatMessages from "./data/funnyCatMessages";
 import milestoneMessages from "./data/milestoneMessages";
