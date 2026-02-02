@@ -48,6 +48,7 @@ const App = () => {
   const [confettiMessage, setConfettiMessage] = useState("");
   const [catImage, setCatImage] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(0.4); // default 40% volume for desktop
 
   const CAT_API_KEY = import.meta.env.VITE_CAT_API_KEY;
 
@@ -61,9 +62,10 @@ const App = () => {
     setMessage(random);
 
     // Play a random meow every 5 clicks
-    if (newPets % 5 === 0 && !isMuted) {
+    if (newPets % 5 === 0) {
       const randomIndex = Math.floor(Math.random() * meows.length);
       const audio = new Audio(meows[randomIndex]);
+      audio.volume = isMuted ? 0 : volume;
       audio.play();
     }
 
@@ -140,7 +142,7 @@ const App = () => {
       )}
 
       <motion.div
-        className='fixed top-0 left-0 text-3xl pointer-events-none select-none z-50'
+        className='fixed top-0 left-0 text-3xl pointer-events-none select-none z-40'
         animate={{
           x: cursor.x + 4,
           y: cursor.y + 4,
@@ -172,25 +174,47 @@ const App = () => {
       {/* Counter */}
       <p className='text-sm text-gray-500'>Pets: {pets}</p>
       <p className='text-sm text-gray-500 text-center'>
-        This site has sound effects. Click the button to mute or unmute.
+        {isMuted
+          ? "Interactive cat sounds disabled. Unmute to enable."
+          : "Interactive cat sounds enabled. Adjust volume or mute below."}
       </p>
-      <motion.button
-        onClick={() => setIsMuted(!isMuted)}
-        className='mt-2 px-4 py-2 bg-gray-300 rounded flex items-center gap-2 hover:bg-gray-400'
-        whileHover={{ scale: 1.1, backgroundColor: "#d1d5db" }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      >
-        {isMuted ? (
-          <>
-            <FaVolumeMute size={20} />
-          </>
-        ) : (
-          <>
-            <FaVolumeUp size={20} />
-          </>
-        )}
-      </motion.button>
+      <div className='flex items-center gap-2 mt-2 cursor-auto pointer-events-auto'>
+        <motion.button
+          onClick={() => setIsMuted(!isMuted)}
+          className='px-4 py-2 bg-gray-300 rounded flex items-center gap-2 hover:bg-gray-400'
+          whileHover={{ scale: 1.1, backgroundColor: "#d1d5db" }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          {isMuted ? (
+            <>
+              <FaVolumeMute size={20} />
+            </>
+          ) : (
+            <>
+              <FaVolumeUp size={20} />
+            </>
+          )}
+        </motion.button>
+        <div className='flex items-center gap-2'>
+          <input
+            type='range'
+            min={0}
+            max={100}
+            value={Math.round(volume * 100)}
+            onChange={(e) => {
+              const v = Number(e.target.value) / 100;
+              setVolume(v);
+            }}
+            className='w-32 cursor-pointer'
+            disabled={isMuted}
+          />
+          <span className='text-xs text-gray-600'>
+            {Math.round(volume * 100)}%
+          </span>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );
